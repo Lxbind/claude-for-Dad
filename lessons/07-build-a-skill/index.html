@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-md-color-scheme="default">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 7 — Build your first skill · Claude, for Amet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/learning.css">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body data-depth="2" data-slug="07-build-a-skill" data-screen-label="Lesson 07">
+<div class="pw-progress"><div class="pw-progress-fill"></div></div>
+<header class="pw-header"></header>
+
+<main class="pw-main md-typeset">
+
+  <div class="pw-hero">
+    <div class="pw-hero-num">07</div>
+    <p class="pw-eyebrow">Lesson 07 · Final lesson</p>
+    <h1>Build your first skill</h1>
+    <div class="pw-meta">
+      <span class="pw-chip"><strong>~30 min</strong></span>
+      <span class="pw-chip">in-browser builder</span>
+      <span class="pw-chip">ships a real <strong>SKILL.md</strong></span>
+    </div>
+  </div>
+
+  <aside class="margin-note">
+    Ship something you'd actually reuse — the weekly Monday summary is the classic first skill because you do it every week. First one takes 30 minutes. Fifth run takes two. That's the whole magic. — L.
+  </aside>
+
+  <h2>What a skill is, recap</h2>
+
+  <p>A skill is a markdown file that tells Claude "when X happens, do Y." Claude loads it automatically when its trigger matches. Once installed, you never retype the prompt again.</p>
+
+  <p><strong>The trigger:</strong> finding yourself running the same shape of prompt for the third time. If Lesson 6 had you draft a memo to a department lead, and you'll do that again next month, that's a skill candidate.</p>
+
+  <h2>The four parts of a skill</h2>
+
+  <ol>
+    <li><strong>Name</strong> — short, lowercase, dashes-only. Becomes the folder name.</li>
+    <li><strong>Description</strong> — one sentence Claude reads to decide whether to activate this skill. Make it specific.</li>
+    <li><strong>When it activates</strong> — explicit trigger phrases or situations.</li>
+    <li><strong>What it does</strong> — the actual instructions Claude follows. Use the four-part recipe from Lesson 4 (role / task / context / constraints).</li>
+  </ol>
+
+  <p>A worked example from Lesson 4 turned into a skill:</p>
+
+<pre><code>---
+name: dept-lead-memo
+description: Drafts a two-paragraph memo to an internal department lead
+  about a procurement decision (pause, switch, escalate). Triggers when
+  the user says "memo to [dept] lead" or pastes raw notes about a
+  supplier decision.
+---
+
+# Department lead memo
+
+## When this skill activates
+
+When the user says "memo to [department] lead about [supplier]," or
+pastes raw notes about a supplier decision and asks for a memo.
+
+## What it does
+
+Role: procurement consultant at Sanofi advising internal departments.
+
+Task: Draft a two-paragraph memo to the named department lead
+explaining the procurement decision. Tone: firm but collegial.
+
+Context to extract from the user's notes:
+- Which supplier
+- What's changing (pause, switch, escalate)
+- Why
+- Who originally sponsored the supplier (if relevant)
+
+Constraints:
+- Two paragraphs, no more.
+- Don't list missed deadlines as bullets — keep it narrative.
+- Don't apologize for the decision.
+- Don't promise a specific next step unless the user provided one.</code></pre>
+
+  <h2>Build yours</h2>
+
+  <p>Fill in the form below. The right-hand pane shows what the resulting <code>SKILL.md</code> will look like. Click <strong>Copy</strong> or <strong>Download</strong> when you're done.</p>
+
+  <div class="skill-builder"></div>
+
+  <h2>Install it</h2>
+
+  <ol>
+    <li>Make sure Claude Code is installed on your computer (<a href="https://docs.anthropic.com/en/docs/claude-code">install guide</a>).</li>
+    <li>Create the folder (use your skill name from above):
+      <ul>
+        <li><strong>Mac/Linux:</strong> <code>~/.claude/skills/&lt;your-skill-name&gt;/</code></li>
+        <li><strong>Windows:</strong> <code>C:\Users\&lt;your-username&gt;\.claude\skills\&lt;your-skill-name&gt;\</code></li>
+      </ul>
+    </li>
+    <li>Save the <code>SKILL.md</code> from above into that folder.</li>
+    <li>Restart Claude Code (or open a new session).</li>
+  </ol>
+
+  <h2>Test it</h2>
+
+  <p>Open Claude Code. Type the trigger phrase you defined under "When it activates." The skill should activate automatically — Claude will follow your instructions instead of giving a generic response.</p>
+
+  <p>If it doesn't activate, your description or trigger phrases probably need to be more specific. Iterate.</p>
+
+  <h2>Done check</h2>
+
+  <div class="quiz" data-quiz-id="skill-done">
+    <p class="quiz-q">Did your skill activate when you triggered it?</p>
+    <ul class="quiz-opts">
+      <li data-correct="true" data-explain="That's the win. You've now turned a one-off prompt into a reusable workflow. Anything you do more than three times should follow this pattern.">Yes — Claude followed my instructions on the first try</li>
+      <li data-correct="false" data-explain="That's actually the common case. Skills need iteration. Look at your description — is it specific enough that Claude knows when *not* to activate? Sharpen it and try again. Skills get better with use.">It activated, but the output wasn't quite right</li>
+      <li data-correct="false" data-explain="Usually means the description is too vague. Claude doesn't know when to use the skill. Be more specific — name actual phrases users will type ('when I say X' or 'when notes mention Y').">It didn't activate</li>
+      <li data-correct="false" data-explain="No worries — skills require Claude Code (or another surface that supports them). claude.ai web doesn't. If you don't have Claude Code installed, that's the blocker.">I couldn't install it</li>
+    </ul>
+  </div>
+
+  <h2>What's next</h2>
+
+  <p>You've finished the course. Here's the bar from the <a href="../../curriculum/index.html">curriculum overview</a>:</p>
+
+  <ul>
+    <li>✅ You can name what claude.ai / Claude Code / a skill / an MCP server are</li>
+    <li>✅ You can look at a task and pick the right tool for it</li>
+    <li>✅ You've used Claude on a real task once</li>
+    <li>✅ You've shipped at least one skill</li>
+  </ul>
+
+  <p>Beyond here, learning more is just doing more. Run the four-part recipe on more tasks. When the same shape comes up three times, wrap it in a skill. When you hit a wall claude.ai can't solve, that's when you reach for Claude Code or MCP — and you'll know it when it happens.</p>
+
+  <p>The point isn't to use every tool — it's to know which one fits when. <strong>You're there.</strong> There you go.</p>
+
+  <div class="pw-pager"></div>
+
+</main>
+
+<footer class="pw-foot">
+  <span>Lesson 7 of 7 · that's the whole course · affectivement</span>
+  <span class="pw-heart" title="you're the best dad. i love you. — L.">♥</span>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script src="../../assets/skill-builder.js"></script>
+<script src="../../assets/game.js"></script>
+<script src="../../assets/askbot.js"></script>
+</body>
+</html>

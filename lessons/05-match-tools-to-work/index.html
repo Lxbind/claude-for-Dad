@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-md-color-scheme="default">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 5 — Match tools to your work · Claude, for Amet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/learning.css">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body data-depth="2" data-slug="05-match-tools-to-work" data-screen-label="Lesson 05">
+<div class="pw-progress"><div class="pw-progress-fill"></div></div>
+<header class="pw-header"></header>
+
+<main class="pw-main md-typeset">
+
+  <div class="pw-hero">
+    <div class="pw-hero-num">05</div>
+    <p class="pw-eyebrow">Lesson 05</p>
+    <h1>Match tools to your work</h1>
+    <div class="pw-meta">
+      <span class="pw-chip"><strong>~15 min</strong></span>
+      <span class="pw-chip">practice questions</span>
+      <span class="pw-chip">then your own chart</span>
+    </div>
+  </div>
+
+  <p>Lesson 4 named the tools. This lesson teaches the <em>judgment</em> — looking at a task and picking the tool. The pattern, once you see it, is simple.</p>
+
+  <aside class="margin-note">
+    If Lesson 4's names felt slippery, this is where they lock in. You'll pick tools for made-up tasks first, then for your own — and <em>your own</em> is where the pattern really sticks. — L.
+  </aside>
+
+  <p><strong>Reminder — here's what each surface actually looks like.</strong> Flip through if you need a refresher before the practice quizzes.</p>
+
+  <div data-playground="tool-tour"></div>
+
+  <h2>The decision rule</h2>
+
+  <p>Ask three questions about a task, in order:</p>
+
+  <ol>
+    <li><strong>Does it need to read files on my computer?</strong> → if yes, Claude Code.</li>
+    <li><strong>Does it need to touch other apps (email, calendar, internal systems)?</strong> → if yes, Claude Desktop + MCP.</li>
+    <li><strong>Otherwise</strong> → claude.ai is the answer.</li>
+  </ol>
+
+  <p>Then a fourth question on top:</p>
+
+  <ol start="4">
+    <li><strong>Do I do this task more than once a week with the same shape?</strong> → wrap it in a <strong>skill</strong> so you don't retype.</li>
+  </ol>
+
+  <p>Plus a fifth, situational:</p>
+
+  <ol start="5">
+    <li><strong>Do I keep re-pasting the same setup paragraph?</strong> → put it in a <strong>Project</strong>.</li>
+  </ol>
+
+  <p>That's the entire mental model. Let's practice.</p>
+
+  <h2>Practice 1 — A recurring summary</h2>
+
+  <div class="quiz" data-quiz-id="match-summary">
+    <p class="quiz-q">"Every Monday, I summarize the previous week's supplier interactions into a one-page brief for my department lead." Which tool fits best?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="claude.ai works, but you'd retype the same instructions every Monday. That's the exact case skills exist for.">claude.ai — paste the notes, ask for a summary</li>
+      <li data-correct="true" data-explain="Right. Recurring same-shape task = skill. You define the format once ('produce a one-page brief with: status by supplier, decisions, open risks, recommended next actions, under 400 words'), and every Monday you just paste your notes and trigger the skill. Lesson 5 builds exactly this.">A skill — same task, same shape, every week</li>
+      <li data-correct="false" data-explain="Claude Code is for file editing, not summarization of pasted text. Overkill here.">Claude Code</li>
+      <li data-correct="false" data-explain="MCP would only help if the supplier notes are scattered across systems Claude needs to pull from. If they're already in one place, MCP is overkill.">MCP / Claude Desktop</li>
+    </ul>
+  </div>
+
+  <h2>Practice 2 — Reading 12 contracts</h2>
+
+  <div class="quiz" data-quiz-id="match-contracts">
+    <p class="quiz-q">"I have 12 PDF contracts from a category. I need to extract the key terms (price, expiry, termination clause) into a comparison table." Which tool fits best?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="You'd have to upload 12 files into the chat (if claude.ai even allows that many) and the chat gets unwieldy. There's a better tool.">claude.ai — upload them one by one and ask</li>
+      <li data-correct="true" data-explain="Right. When the task is 'read these files,' Claude Code is purpose-built. Point it at the folder, ask for the comparison table, get the answer. claude.ai works but is clunky for 12 files.">Claude Code — point it at the folder of PDFs</li>
+      <li data-correct="false" data-explain="Skills are for repeating the same task. If this is a one-off, a skill is overkill. (If you do this every quarter for a new category, then yes, also wrap it in a skill.)">A skill</li>
+      <li data-correct="false" data-explain="MCP would only help if the contracts live in a connected system Claude needs to fetch. If they're on your disk, Claude Code is the answer.">MCP / Claude Desktop</li>
+    </ul>
+  </div>
+
+  <h2>Practice 3 — Checking the calendar</h2>
+
+  <div class="quiz" data-quiz-id="match-calendar">
+    <p class="quiz-q">"I want Claude to check my Google Calendar, find a 30-minute slot next week that works for me and three suppliers, and draft the invite." Which tool fits best?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="claude.ai can draft the invite text but can't read your calendar — it's sandboxed.">claude.ai</li>
+      <li data-correct="false" data-explain="Claude Code reads files on your computer, not external apps like Google Calendar.">Claude Code</li>
+      <li data-correct="true" data-explain="Right. The moment the task touches an external app (calendar, email, internal system), you need MCP. Install the Google Calendar MCP server, use Claude Desktop, and Claude can read your calendar, find slots, draft invites. Without MCP, Claude can't see your calendar.">Claude Desktop + Google Calendar MCP server</li>
+      <li data-correct="false" data-explain="A skill alone doesn't help here — the bottleneck is calendar access, not repetition. A skill *plus* MCP would help if you do this often.">A skill</li>
+    </ul>
+  </div>
+
+  <h2>Practice 4 — One-off question</h2>
+
+  <div class="quiz" data-quiz-id="match-oneoff">
+    <p class="quiz-q">"I want to draft a tough email to a supplier whose delivery is three weeks late. Just this once." Which tool fits best?</p>
+    <ul class="quiz-opts">
+      <li data-correct="true" data-explain="Right. One-off thinking with no file access needed = claude.ai. Don't over-engineer. The right tool here is the simplest one. Paste your context, ask for a draft, edit, send.">claude.ai — describe the situation, ask for a draft</li>
+      <li data-correct="false" data-explain="It's one email, not a recurring task. Building a skill for a one-off is wasted effort.">A skill</li>
+      <li data-correct="false" data-explain="No files to read, no apps to touch. Claude Code and MCP are overkill.">Claude Code</li>
+      <li data-correct="false" data-explain="See above — MCP only matters if Claude needs to *read* something from another app.">MCP</li>
+    </ul>
+  </div>
+
+  <h2>Practice 5 — Repeated setup</h2>
+
+  <div class="quiz" data-quiz-id="match-setup">
+    <p class="quiz-q">"Every chat I open with Claude, I start with the same paragraph: 'I'm a procurement consultant at Sanofi advising internal departments...' Is there a better way?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="It works but it's exactly the friction Projects exist to remove.">Just keep pasting the paragraph</li>
+      <li data-correct="true" data-explain="Right. A Project is a folder in claude.ai where you set the context once — your role, your company, examples — and every chat inside the Project inherits it. No more retyping the setup paragraph. Best for ongoing work areas where the context never changes.">Create a Project in claude.ai with that paragraph as the instructions</li>
+      <li data-correct="false" data-explain="Skills activate on trigger phrases — they're not for 'always-on context.' Projects are.">Make it a skill</li>
+      <li data-correct="false" data-explain="MCP doesn't apply here — there's no external app involved.">Set up an MCP server</li>
+    </ul>
+  </div>
+
+  <h2>Now do this for your own workflow</h2>
+
+  <div class="quiz" data-quiz-id="self-match" data-next="06-try-claude.md">
+    <p class="quiz-q">Open your <a href="../01-map-your-workflow/index.html">Lesson 1 chart</a> in another tab. For each row, run the decision rule (files? apps? recurring? setup?). Which row is the most obvious win for claude.ai?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="If you haven't, do Lesson 1 first — this lesson needs your chart to land.">I haven't filled in my workflow yet</li>
+      <li data-correct="true" data-explain="Good. The row you just picked is what we'll use in Lesson 4 — your first real task on claude.ai. Pick a row that's not confidential, has a clear output, and you do at least monthly. Bonus if it's something you find annoying.">I've picked the row — let's try it</li>
+      <li data-correct="false" data-explain="No worries — pick the row where you most often think 'I wish I had help with this.' If nothing jumps out, pick a recurring summary or draft you do.">None of them seem to fit claude.ai cleanly</li>
+    </ul>
+    <p class="quiz-next-cta">Lesson 6 — Try Claude on a real task →</p>
+  </div>
+
+  <h2>Cheat sheet (for later)</h2>
+
+  <table>
+    <thead><tr><th>If the task…</th><th>Use…</th></tr></thead>
+    <tbody>
+      <tr><td>Needs to read files on your computer</td><td>Claude Code</td></tr>
+      <tr><td>Needs to touch Gmail / Calendar / internal systems</td><td>Claude Desktop + MCP</td></tr>
+      <tr><td>Is recurring with the same shape</td><td>Wrap in a skill</td></tr>
+      <tr><td>Always uses the same setup info</td><td>Put setup in a Project</td></tr>
+      <tr><td>Is one-off, no file access, no app access</td><td>claude.ai (default)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pw-pager"></div>
+
+</main>
+
+<footer class="pw-foot">
+  <span>Lesson 5 of 7 · your progress saves in this browser</span>
+  <span class="pw-heart" title="you're the best dad. i love you. — L.">♥</span>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script src="../../assets/playgrounds.js"></script>
+<script src="../../assets/game.js"></script>
+<script src="../../assets/askbot.js"></script>
+</body>
+</html>

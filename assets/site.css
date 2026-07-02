@@ -1,0 +1,791 @@
+/* =============================================================
+   Dad's Claude Curriculum — "Cool Studio" redesign layer
+   Loaded AFTER learning.css. Re-tokens the whole system to a
+   cool, jitter-inspired palette + crisp grotesk type, and adds
+   the new linear-course chrome (header, dots, pager, motion).
+   ============================================================= */
+
+/* -------------------------------------------------------------
+   1. RE-TOKEN — cool palette, new fonts
+   ------------------------------------------------------------- */
+
+:root {
+  /* Cool neutrals */
+  --anth-cream:       #f6f7fa;
+  --anth-cream-2:     #edeff5;
+  --anth-ink:         #0e1116;
+  --anth-ink-soft:    #343b47;
+  --anth-ink-mute:    #697182;
+  --anth-mid:         #aab1c0;
+  --anth-veil:        #e3e6ee;
+
+  /* Accents — shared lightness/chroma, hues apart */
+  --anth-orange:      #4b5cf7;   /* primary is now electric indigo */
+  --anth-orange-ink:  #3240d9;
+  --anth-orange-veil: #e7e9fe;
+  --anth-blue:        #2e9fd8;
+  --anth-blue-ink:    #1f7cb1;
+  --anth-blue-veil:   #ddf0fa;
+  --anth-green:       #23a97e;
+  --anth-green-ink:   #14805e;
+  --anth-green-veil:  #dcf3ea;
+
+  --bg:               var(--anth-cream);
+  --bg-panel:         #ffffff;
+  --bg-sunk:          var(--anth-cream-2);
+  --fg:               var(--anth-ink);
+  --fg-soft:          var(--anth-ink-soft);
+  --fg-mute:          var(--anth-ink-mute);
+  --rule:             var(--anth-veil);
+  --rule-strong:      var(--anth-mid);
+  --accent:           var(--anth-orange);
+  --accent-ink:       var(--anth-orange-ink);
+  --accent-veil:      var(--anth-orange-veil);
+
+  --grad:             linear-gradient(92deg, #4b5cf7 0%, #7a5cff 55%, #2e9fd8 120%);
+
+  /* Type — crisp grotesk everywhere; serif kept only for the
+     personal margin-note / dedication voice */
+  --font-display:     'Instrument Sans', 'Helvetica Neue', system-ui, sans-serif;
+  --font-body:        'Instrument Sans', 'Helvetica Neue', system-ui, sans-serif;
+  --font-serif:       'Instrument Serif', Georgia, serif;
+  --font-mono:        'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+
+  --t-body:           1.04rem;
+  --t-lede:           1.22rem;
+  --t-h1:             2.7rem;
+
+  /* Sharper radii + cooler shadows */
+  --r-lg:             14px;
+  --shadow-1:         0 1px 2px rgba(14, 17, 22, 0.05);
+  --shadow-2:         0 8px 24px rgba(30, 41, 92, 0.09);
+  --shadow-3:         0 20px 48px rgba(30, 41, 92, 0.14);
+
+  --md-text-font: 'Instrument Sans', system-ui, sans-serif;
+  --md-text-font-family: 'Instrument Sans', system-ui, sans-serif;
+}
+
+[data-md-color-scheme='slate'] {
+  --bg:               #0b0d12;
+  --bg-panel:         #12151d;
+  --bg-sunk:          #070810;
+  --fg:               #e9ebf3;
+  --fg-soft:          #c3c8d6;
+  --fg-mute:          #7e8598;
+  --rule:             #21252f;
+  --rule-strong:      #3c4252;
+  --accent:           #7d88ff;
+  --accent-ink:       #a4acff;
+  --accent-veil:      #1e2143;
+  --anth-orange:      #7d88ff;
+  --anth-orange-ink:  #a4acff;
+  --anth-orange-veil: #1e2143;
+  --anth-blue:        #56b7e8;
+  --anth-blue-ink:    #8ccdf0;
+  --anth-blue-veil:   #102634;
+  --anth-green:       #3fc496;
+  --anth-green-ink:   #7cdcba;
+  --anth-green-veil:  #0d2b21;
+  --anth-cream:       #0b0d12;
+  --anth-cream-2:     #070810;
+  --anth-veil:        #21252f;
+  --anth-mid:         #3c4252;
+  --shadow-2:         0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-3:         0 20px 48px rgba(0, 0, 0, 0.6);
+  --grad:             linear-gradient(92deg, #7d88ff 0%, #9b7dff 55%, #56b7e8 120%);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: 1.65;
+  transition: background-color 300ms ease, color 300ms ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Serif voice stays for the personal artifacts */
+.margin-note, .cover-dedication, .colophon, .quiz-restored {
+  font-family: var(--font-serif);
+}
+
+/* Headings — tight, modern */
+.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+}
+.md-typeset h1 { font-weight: 600; }
+.md-typeset h2 { font-weight: 600; }
+
+/* Signature numerals — now outlined, premium */
+.lesson-mast-num {
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--accent);
+  letter-spacing: -0.02em;
+}
+
+/* -------------------------------------------------------------
+   2. PAGE SHELL
+   ------------------------------------------------------------- */
+
+.pw-main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+.pw-wide { max-width: 980px; }
+
+/* Scroll progress bar */
+.pw-progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  z-index: 120;
+  background: transparent;
+  pointer-events: none;
+}
+.pw-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--grad);
+  border-radius: 0 2px 2px 0;
+  transition: width 80ms linear;
+}
+
+/* Header */
+.pw-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 1.4rem;
+  background: color-mix(in oklab, var(--bg) 78%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--rule);
+}
+.pw-wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--fg);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.pw-wordmark em {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--fg-mute);
+  font-size: 0.9rem;
+}
+.pw-wordmark:hover em { color: var(--accent-ink); }
+
+/* Lesson dot rail */
+.pw-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.pw-dot {
+  display: block;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--rule);
+  border: 1.5px solid var(--rule-strong);
+  transition: transform 200ms cubic-bezier(0.2, 0.9, 0.3, 1.4), background 200ms ease, border-color 200ms ease;
+  position: relative;
+}
+.pw-dot:hover { transform: scale(1.5); border-color: var(--accent); }
+.pw-dot.done { background: var(--accent); border-color: var(--accent); }
+.pw-dot.current {
+  background: var(--bg);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-veil);
+  animation: pw-pulse 2.4s ease-in-out infinite;
+}
+@keyframes pw-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px var(--accent-veil); }
+  50%      { box-shadow: 0 0 0 6px var(--accent-veil); }
+}
+.pw-dot .pw-dot-tip {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  background: var(--fg);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+.pw-dot:hover .pw-dot-tip { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+.pw-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.pw-navlink {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--fg-mute);
+  text-decoration: none;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  transition: color 160ms ease, background 160ms ease;
+}
+.pw-navlink:hover { color: var(--fg); background: var(--bg-sunk); }
+.pw-theme-btn {
+  width: 34px; height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: var(--bg-panel);
+  color: var(--fg);
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: transform 250ms cubic-bezier(0.2, 0.9, 0.3, 1.4), border-color 160ms ease;
+}
+.pw-theme-btn:hover { transform: rotate(40deg) scale(1.08); border-color: var(--accent); }
+
+/* -------------------------------------------------------------
+   3. LESSON HERO
+   ------------------------------------------------------------- */
+
+.pw-hero {
+  padding: 3.2rem 0 1rem;
+  position: relative;
+}
+.pw-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-ink);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0 0 1.1rem;
+}
+.pw-eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--rule-strong), transparent);
+}
+.pw-hero-num {
+  position: absolute;
+  top: 0.4rem;
+  right: -0.5rem;
+  font-family: var(--font-display);
+  font-size: 9rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--rule-strong);
+  opacity: 0.55;
+  user-select: none;
+  pointer-events: none;
+  z-index: -1;
+}
+.pw-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+  font-weight: 640;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  margin: 0 0 1.1rem;
+  text-wrap: balance;
+}
+.pw-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 0.8rem;
+}
+.pw-chip {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--fg-mute);
+  background: var(--bg-panel);
+}
+.pw-chip strong { color: var(--fg); font-weight: 600; }
+
+/* -------------------------------------------------------------
+   4. PREV / NEXT PAGER
+   ------------------------------------------------------------- */
+
+.pw-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 4rem 0 0;
+}
+.pw-pager-card {
+  display: block;
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+  background: var(--bg-panel);
+  padding: 1.2rem 1.4rem;
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.3, 1.2), box-shadow 220ms ease, border-color 220ms ease;
+}
+.pw-pager-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-2);
+  border-color: var(--accent);
+}
+.pw-pager-card.next { text-align: right; }
+.pw-pager-card.pw-empty { visibility: hidden; }
+.pw-pager-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--fg-mute);
+  margin-bottom: 0.45rem;
+}
+.pw-pager-card.next .pw-pager-label { justify-content: flex-end; }
+.pw-pager-title {
+  font-family: var(--font-display);
+  font-weight: 640;
+  font-size: 1.06rem;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+.pw-pager-card .pw-arrow { display: inline-block; transition: transform 220ms ease; color: var(--accent-ink); }
+.pw-pager-card.next:hover .pw-arrow { transform: translateX(4px); }
+.pw-pager-card.prev:hover .pw-arrow { transform: translateX(-4px); }
+
+/* -------------------------------------------------------------
+   5. LANDING COVER
+   ------------------------------------------------------------- */
+
+.pw-cover {
+  position: relative;
+  padding: 5.5rem 0 3.5rem;
+  overflow: visible;
+}
+.pw-orbs {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+}
+.pw-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+  animation: pw-drift 22s ease-in-out infinite alternate;
+}
+[data-md-color-scheme='slate'] .pw-orb { opacity: 0.22; }
+.pw-orb.o1 { width: 480px; height: 480px; background: #7a8cff; top: -180px; right: -120px; }
+.pw-orb.o2 { width: 380px; height: 380px; background: #6fd0f5; bottom: -160px; left: -140px; animation-delay: -8s; }
+.pw-orb.o3 { width: 260px; height: 260px; background: #b49cff; top: 40%; left: 55%; animation-delay: -14s; }
+@keyframes pw-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(60px, 40px) scale(1.12); }
+}
+
+.pw-cover-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--fg-mute);
+  margin: 0 0 1.6rem;
+}
+.pw-cover h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.9rem, 8vw, 5.2rem);
+  font-weight: 680;
+  letter-spacing: -0.045em;
+  line-height: 0.99;
+  margin: 0 0 1.6rem;
+  text-wrap: balance;
+}
+.pw-cover h1 .grad {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.pw-cover h1 em {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.pw-lede {
+  font-size: var(--t-lede);
+  color: var(--fg-soft);
+  max-width: 34em;
+  line-height: 1.6;
+  margin: 0 0 1.8rem;
+}
+.pw-dedication {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.12rem;
+  color: var(--fg-mute);
+  margin: 0 0 2.4rem;
+}
+.pw-dedication .pw-name {
+  color: var(--accent-ink);
+  cursor: default;
+  border-bottom: 1px dashed var(--accent);
+}
+.pw-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 640;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  color: #fff;
+  background: var(--fg);
+  text-decoration: none;
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.3, 1.3), box-shadow 220ms ease, background 220ms ease;
+  box-shadow: var(--shadow-1);
+}
+[data-md-color-scheme='slate'] .pw-cta { color: #0b0d12; background: #e9ebf3; }
+.pw-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-3);
+  background: var(--accent);
+  color: #fff;
+}
+.pw-cta .pw-arrow { transition: transform 220ms ease; }
+.pw-cta:hover .pw-arrow { transform: translateX(5px); }
+.pw-cta-sub {
+  display: inline-block;
+  margin-left: 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--fg-mute);
+}
+
+/* Landing lesson cards */
+.pw-lessons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+  margin: 1.6rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.pw-lesson-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+  background: var(--bg-panel);
+  padding: 1.15rem 1.25rem 1.05rem;
+  text-decoration: none;
+  color: var(--fg);
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.3, 1.2), box-shadow 220ms ease, border-color 220ms ease;
+  overflow: hidden;
+}
+.pw-lesson-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-2);
+  border-color: var(--accent);
+}
+.pw-lesson-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+.pw-lesson-num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+}
+.pw-lesson-time {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--fg-mute);
+}
+.pw-lesson-title {
+  font-family: var(--font-display);
+  font-weight: 640;
+  font-size: 1.08rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.pw-lesson-desc {
+  font-size: 0.88rem;
+  color: var(--fg-mute);
+  line-height: 1.5;
+}
+.pw-lesson-card .pw-check {
+  position: absolute;
+  top: 0.9rem;
+  right: 1rem;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: none;
+  place-items: center;
+  background: var(--anth-green-veil);
+  color: var(--anth-green-ink);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.pw-lesson-card.done .pw-check { display: grid; }
+.pw-lesson-card.done .pw-lesson-time { display: none; }
+
+/* -------------------------------------------------------------
+   6. MOTION — reveal on scroll
+   ------------------------------------------------------------- */
+
+.pw-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 650ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.pw-reveal.pw-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pw-reveal { opacity: 1; transform: none; transition: none; }
+  .pw-orb, .pw-dot.current { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* -------------------------------------------------------------
+   7. FOOTER + EASTER EGG BITS
+   ------------------------------------------------------------- */
+
+.pw-foot {
+  border-top: 1px solid var(--rule);
+  margin-top: 4rem;
+  padding: 1.6rem 1.5rem 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--fg-mute);
+}
+.pw-foot .pw-heart {
+  cursor: help;
+  transition: transform 200ms cubic-bezier(0.2, 0.9, 0.3, 1.6);
+  display: inline-block;
+}
+.pw-foot .pw-heart:hover { transform: scale(1.4); }
+
+/* "Who?" tooltip on any name dad won't recognize */
+.pw-who {
+  position: relative;
+  border-bottom: 1px dotted var(--rule-strong);
+  cursor: help;
+}
+.pw-who::after {
+  content: 'Who?';
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) translateY(3px);
+  background: var(--fg);
+  color: var(--bg);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.78rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 7px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+  z-index: 50;
+}
+.pw-who:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* -------------------------------------------------------------
+   8. COMPONENT POLISH on top of learning.css
+   ------------------------------------------------------------- */
+
+.quiz {
+  border-radius: var(--r-lg);
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow-1);
+  transition: box-shadow 250ms ease, border-color 250ms ease;
+}
+.quiz:hover { box-shadow: var(--shadow-2); }
+.quiz .quiz-opts > li {
+  border-radius: 10px;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+.quiz .quiz-opts > li:not(.disabled):hover { transform: translateX(4px); }
+
+.md-typeset .cover { display: none; } /* old landing cover, superseded */
+
+.md-typeset table:not([class]) {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+.md-typeset table:not([class]) th { background: var(--bg-sunk); }
+
+.md-typeset pre {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+}
+.md-typeset pre code { background: transparent; padding: 0; font-size: 0.82rem; line-height: 1.6; }
+.md-typeset code {
+  background: var(--bg-sunk);
+  border-radius: 6px;
+  padding: 0.12em 0.4em;
+}
+
+.md-typeset blockquote {
+  border-left: 2px solid var(--accent);
+  padding: 0.2rem 0 0.2rem 1.2rem;
+  margin-left: 0;
+  color: var(--fg-soft);
+}
+
+.margin-note {
+  background: var(--bg-panel);
+  border: 1px solid var(--rule);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 var(--r-lg) var(--r-lg) 0;
+  padding: 1rem 1.3rem;
+  font-style: italic;
+  color: var(--fg-soft);
+  margin: 1.8rem 0;
+  box-shadow: var(--shadow-1);
+}
+
+/* -------------------------------------------------------------
+   9. RESPONSIVE
+   ------------------------------------------------------------- */
+
+/* -------------------------------------------------------------
+   10. ASK-BOT — collapsed launcher + pop-up open animation
+   ------------------------------------------------------------- */
+
+/* Launcher: crisp pill in brand color, with an attention breathe */
+.askbot-wrap { z-index: 130; }
+.askbot-launch {
+  border-radius: 999px !important;
+  border: 1px solid var(--accent) !important;
+  background: var(--accent) !important;
+  color: #fff !important;
+  box-shadow: var(--shadow-2) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em;
+  animation: askbot-breathe 3.6s ease-in-out infinite;
+  transition: transform 220ms cubic-bezier(0.2, 0.9, 0.3, 1.4), box-shadow 220ms ease !important;
+}
+.askbot-launch:hover {
+  transform: translateY(-3px) scale(1.03) !important;
+  box-shadow: var(--shadow-3) !important;
+  animation-play-state: paused;
+}
+.askbot-launch .askbot-launch-icon {
+  background: rgba(255,255,255,0.22) !important;
+  color: #fff !important;
+}
+/* When the panel is open, shrink the launcher into a tidy round toggle */
+.askbot-launch.open {
+  animation: none;
+  border-radius: 999px !important;
+  background: var(--fg) !important;
+  border-color: var(--fg) !important;
+}
+.askbot-launch.open .askbot-launch-icon { background: rgba(255,255,255,0.18) !important; }
+
+@keyframes askbot-breathe {
+  0%, 100% { box-shadow: 0 8px 24px rgba(30,41,92,0.14); }
+  50%      { box-shadow: 0 10px 30px rgba(75,92,247,0.34); }
+}
+
+/* Panel: pop up from the launcher instead of appearing instantly */
+/* Panel: hidden until the launcher is pressed (CSS display was overriding [hidden]) */
+.askbot-panel[hidden] { display: none !important; }
+.askbot-panel {
+  transform-origin: bottom right;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-3) !important;
+}
+.askbot-panel:not([hidden]) {
+  animation: askbot-pop 320ms cubic-bezier(0.16, 1.1, 0.3, 1) both;
+}
+@keyframes askbot-pop {
+  0%   { opacity: 0; transform: translateY(16px) scale(0.9); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+/* stagger the messages in as the panel opens */
+.askbot-panel:not([hidden]) .askbot-msg {
+  animation: askbot-msg-in 380ms ease both;
+}
+@keyframes askbot-msg-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+.askbot-header { border-radius: 16px 16px 0 0 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .askbot-launch { animation: none; }
+  .askbot-panel:not([hidden]),
+  .askbot-panel:not([hidden]) .askbot-msg { animation: none; }
+}
+
+@media (max-width: 720px) {
+  .pw-dots { display: none; }
+  .pw-lessons { grid-template-columns: 1fr; }
+  .pw-pager { grid-template-columns: 1fr; }
+  .pw-hero-num { font-size: 5.5rem; opacity: 0.35; }
+  .pw-main { padding: 2rem 1.1rem 4rem; }
+}

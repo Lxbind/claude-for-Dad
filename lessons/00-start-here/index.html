@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" data-md-color-scheme="default">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 0 — Start here · Claude, for Amet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/learning.css">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body data-depth="2" data-slug="00-start-here" data-screen-label="Lesson 00">
+<div class="pw-progress"><div class="pw-progress-fill"></div></div>
+<header class="pw-header"></header>
+
+<main class="pw-main md-typeset">
+
+  <div class="pw-hero">
+    <div class="pw-hero-num">00</div>
+    <p class="pw-eyebrow">Lesson 00</p>
+    <h1>Start here</h1>
+    <div class="pw-meta">
+      <span class="pw-chip"><strong>~10 min</strong></span>
+      <span class="pw-chip">4 quick questions with feedback</span>
+      <span class="pw-chip">nothing to install</span>
+    </div>
+  </div>
+
+  <p>By the end you'll know the four ideas that everything else in this course leans on. If you already know them cold, you'll fly through. If not, this is the foundation.</p>
+
+  <aside class="margin-note">
+    Dad — these four ideas are the whole ballgame. If you skim any of them, you'll get lost by Lesson 3. Slow read. — L.
+  </aside>
+
+  <h2>The four ideas</h2>
+
+  <h3>1. What an LLM actually is</h3>
+
+  <div class="quiz" data-quiz-id="what-is-llm">
+    <p class="quiz-q">What is a large language model (LLM) actually doing when you chat with it?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="Not quite. LLMs don't search the internet by default. They generate text from patterns learned during training.">Searching the internet for the best answer</li>
+      <li data-correct="true" data-explain="Right. An LLM is a probability machine — for any given prompt, it predicts the most likely next word, again and again. That's why the same question can get slightly different answers. It's also why LLMs sometimes confidently make things up: they're predicting, not retrieving.">Predicting the next word, over and over, based on patterns from training</li>
+      <li data-correct="false" data-explain="No — an LLM has no internal database it queries. Its 'knowledge' lives in the weights, encoded as patterns, not as facts in a lookup table.">Looking up facts in a database</li>
+      <li data-correct="false" data-explain="No — it doesn't write code unless prompted to, and its core function is predicting text, not running programs.">Running code to compute answers</li>
+    </ul>
+  </div>
+
+  <p><strong>Why this matters:</strong> because an LLM is predicting, it's brilliant at <em>organizing what you give it</em> and weaker at <em>recalling specific facts</em>. Lean on it for synthesis, structure, drafting. Verify it on numbers, dates, names.</p>
+
+  <h3>2. What "a chat" actually is</h3>
+
+  <div class="quiz" data-quiz-id="what-is-chat">
+    <p class="quiz-q">When you open a new chat with Claude, what does Claude know about you?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="No — by default, every new chat is a blank slate. Claude doesn't remember previous conversations unless you've explicitly set up memory or a Project.">Everything from your past chats</li>
+      <li data-correct="false" data-explain="No — Claude doesn't have access to your computer, your email, or anything else unless you've connected it via a specific tool (we'll cover this in Lesson 2 — MCP).">Your files, calendar, and email</li>
+      <li data-correct="true" data-explain="Exactly. Every new chat starts blank. Whatever Claude knows about you in that conversation has to come from what you type into it. This is the most important fact about chatting with AI — and the reason 'Projects' and 'skills' exist (to carry context across chats).">Nothing — every new chat starts blank</li>
+      <li data-correct="false" data-explain="Close, but more limited. Claude has general training knowledge (which has a cutoff date), but knows nothing specific about *you* in a fresh chat.">Whatever was in the news up to yesterday</li>
+    </ul>
+  </div>
+
+  <p><strong>Why this matters:</strong> if you want Claude to know something about your work, you have to either tell it (paste it into the chat), save it (use a Project), or automate it (use a skill). Otherwise, you're starting from zero every time.</p>
+
+  <h3>3. Why surfaces exist</h3>
+
+  <div class="quiz" data-quiz-id="why-surfaces">
+    <p class="quiz-q">Claude has multiple "surfaces" — claude.ai (web chat), Claude Code (terminal), Claude Desktop (with app connections), etc. Why?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="No — they all use the same underlying Claude models. The difference is in what each surface can *access* and *do*.">Each surface uses a different, smarter version of Claude</li>
+      <li data-correct="true" data-explain="Right. The model is the same — Claude is Claude. What changes is what each surface can do: claude.ai is a sandboxed web chat (no file access). Claude Code can read and write files on your machine. Claude Desktop can connect to apps (Gmail, Calendar, etc.). You pick the surface based on what the task needs.">The model is the same; each surface has different access to your files / apps / context</li>
+      <li data-correct="false" data-explain="No — they're not specialized in the way you'd think. The same Claude can write code, draft emails, or summarize meetings. What differs is which of those it can actually *do* depending on what's connected.">Each surface is specialized for one kind of task</li>
+      <li data-correct="false" data-explain="Anthropic does want you to use their products, but the surfaces exist because they solve genuinely different problems. claude.ai for thinking, Claude Code for editing files, Desktop for app access.">It's a sales strategy — Anthropic wants you on multiple products</li>
+    </ul>
+  </div>
+
+  <p><strong>Why this matters:</strong> the right answer to "how do I do X with Claude?" almost always starts with "first, pick the right surface." Lessons 4 and 5 are entirely about this.</p>
+
+  <h3>4. What this means for you</h3>
+
+  <div class="quiz" data-quiz-id="implication" data-next="01-map-your-workflow.md">
+    <p class="quiz-q">Given the three things above, what's the smartest way to learn Claude for your job?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="Reading docs is fine, but you'd be learning generic AI capabilities without knowing which ones fit your procurement work. Inefficient.">Read all of Anthropic's docs cover to cover</li>
+      <li data-correct="false" data-explain="Watching demos shows you what's *possible*, not what's *useful for you*. You'd come away impressed but not equipped.">Watch as many YouTube demos as possible</li>
+      <li data-correct="true" data-explain="Exactly. The course is built around this. Lesson 1 maps your work. Lessons 2–5 teach the tools using your work as the test cases. Lessons 6–7 are hands-on practice on your work. Your work is the textbook.">Map your actual job first, then learn just the AI tools that fit it</li>
+      <li data-correct="false" data-explain="Trial and error works, but it's slow and you'll often pick the wrong tool. A guided path is faster — that's the point of this course.">Just start using claude.ai and figure it out by trial and error</li>
+    </ul>
+    <p class="quiz-next-cta">Lesson 1 — Map your workflow →</p>
+  </div>
+
+  <h2>Recap</h2>
+
+  <table>
+    <thead><tr><th>Idea</th><th>Implication</th></tr></thead>
+    <tbody>
+      <tr><td><strong>LLMs predict text</strong></td><td>Use for synthesis, not for facts you need to be right</td></tr>
+      <tr><td><strong>Chats start blank</strong></td><td>Context has to be supplied — by paste, Project, or skill</td></tr>
+      <tr><td><strong>Surfaces differ by access</strong></td><td>Pick the surface based on what the task needs</td></tr>
+      <tr><td><strong>Your work is the textbook</strong></td><td>Map first, then learn</td></tr>
+    </tbody>
+  </table>
+
+  <p>When the "Next →" button shows up above (after you answer the last question correctly), you're ready for Lesson 1.</p>
+
+  <div class="pw-pager"></div>
+
+</main>
+
+<footer class="pw-foot">
+  <span>Lesson 0 of 7 · your progress saves in this browser</span>
+  <span class="pw-heart" title="you're the best dad. i love you. — L.">♥</span>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script src="../../assets/game.js"></script>
+<script src="../../assets/askbot.js"></script>
+</body>
+</html>

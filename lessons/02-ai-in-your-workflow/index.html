@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-md-color-scheme="default">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 2 — AI in your workflow · Claude, for Amet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/learning.css">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body data-depth="2" data-slug="02-ai-in-your-workflow" data-screen-label="Lesson 02">
+<div class="pw-progress"><div class="pw-progress-fill"></div></div>
+<header class="pw-header"></header>
+
+<main class="pw-main md-typeset">
+
+  <div class="pw-hero">
+    <div class="pw-hero-num">02</div>
+    <p class="pw-eyebrow">Lesson 02</p>
+    <h1>AI in your workflow</h1>
+    <div class="pw-meta">
+      <span class="pw-chip"><strong>~20 min</strong></span>
+      <span class="pw-chip">5 worked examples</span>
+      <span class="pw-chip">no quizzes — just see the pattern</span>
+    </div>
+  </div>
+
+  <aside class="margin-note">
+    The names ("Claude Code," "MCP") are going to show up here and feel arbitrary. Ignore them for now — I'll properly introduce them in Lesson 4. Right now just watch what they <em>do</em>. — L.
+  </aside>
+
+  <p>You just produced a workflow chart. Now look at it through new eyes. AI doesn't help with <em>all</em> of it — but for specific kinds of work, the gain is huge. This lesson walks through five procurement scenarios you likely have on your chart, and shows how each one looks when AI is in the loop.</p>
+
+  <blockquote>
+    <p><strong>Two new names you'll see this lesson.</strong> They're properly introduced in <a href="../04-ai-tool-zoo/index.html">Lesson 4</a>, but you'll meet them by use first — that's the way the course works.</p>
+    <ul>
+      <li><strong>Claude Code</strong> = Claude with hands on your files. Runs in your terminal. Can read, write, and edit files on your computer directly. You point it at a folder; it does work in there.</li>
+      <li><strong>Claude as a coworker</strong> (Claude Desktop + MCP) = Claude with hands on your <em>apps</em>. Hooked up to Gmail, Calendar, Slack, your internal systems. Reads your inbox, schedules meetings, drafts replies — actually does work in your apps.</li>
+    </ul>
+    <p>Everything else this lesson references — <strong>claude.ai</strong> (browser chat), <strong>skills</strong> (reusable instructions) — you've heard before. Don't worry about memorizing the names; just see them in context.</p>
+  </blockquote>
+
+  <h2>Scenario 1 — Drafting a tough email or memo</h2>
+
+  <blockquote><p><strong>If you have a row like:</strong> <em>"Draft renewal-decision memo to R&amp;D dept lead"</em> or <em>"Email a supplier whose delivery is late"</em> — this is the bread-and-butter case.</p></blockquote>
+
+  <p><strong>Tool:</strong> claude.ai (browser).</p>
+
+  <p><strong>How it looks:</strong></p>
+
+  <blockquote>
+    <p><em>You, in claude.ai:</em> "I'm a procurement consultant at a pharma company. I need to write a two-paragraph memo to my R&amp;D department lead telling him we're pausing the Supplier A contract. Context: missed three deadlines this quarter. R&amp;D was the original sponsor. Tone: firm but collegial."</p>
+    <p><em>Claude returns a draft.</em></p>
+    <p><em>You:</em> "Second paragraph is too apologetic. Rewrite without the word 'unfortunately' and add a sentence at the end signaling we're open to a future conversation if their delivery improves."</p>
+    <p><em>Claude returns a sharper draft.</em></p>
+  </blockquote>
+
+  <p><strong>Why this works:</strong> drafting is pure synthesis. You hold the context (Supplier A's history, the stakeholder relationship, the tone you want); Claude holds the structure (paragraph rhythm, professional phrasing). Three iterations and you have something you can send.</p>
+
+  <p><strong>Time saved:</strong> 20–30 min on a memo that takes most people 45–60.</p>
+
+  <p><strong>Try it in a mock claude.ai:</strong> type a memo request below and watch the response stream in.</p>
+
+  <div data-playground="claude-ai-chat" data-mode="free"></div>
+
+  <h2>Scenario 2 — Synthesizing meeting notes into a brief</h2>
+
+  <blockquote><p><strong>If you have a row like:</strong> <em>"Weekly summary of supplier interactions for dept lead"</em> or <em>"Post-RFP debrief for finance"</em> — recurring summarization is everywhere in procurement.</p></blockquote>
+
+  <p><strong>Tool:</strong> claude.ai. Becomes a skill in Lesson 7 once you're doing it weekly.</p>
+
+  <p><strong>How it looks:</strong></p>
+
+  <blockquote>
+    <p><em>You, in claude.ai:</em> "Here are my raw notes from this week's supplier meetings [paste]. Produce a one-page brief for my department lead: status by supplier, decisions made, open risks, recommended next actions. Under 400 words. No fluff."</p>
+    <p><em>Claude returns the brief.</em></p>
+    <p><em>You:</em> "Move the 'open risks' section above 'decisions' — leadership reads the risk section first."</p>
+  </blockquote>
+
+  <p><strong>Why this works:</strong> raw notes are messy; briefs are structured. You're the source of truth on what happened; Claude organizes it. You see your job reflected back faster than you could write it yourself.</p>
+
+  <p><strong>Time saved:</strong> the first one takes 10 min. The 5th time, it takes 2 min (because you've stopped tweaking the format).</p>
+
+  <h2>Scenario 3 — Processing a stack of contracts <span style="white-space:nowrap;">(Claude Code territory)</span></h2>
+
+  <blockquote><p><strong>If you have a row like:</strong> <em>"Review and compare contracts in [category] for the next sourcing cycle"</em> — anything where the task is "read these files" — this is where Claude Code earns its keep.</p></blockquote>
+
+  <p><strong>Tool:</strong> <strong>Claude Code</strong> (terminal). Not claude.ai — you don't want to upload 12 contracts by hand.</p>
+
+  <p><strong>How it looks:</strong></p>
+
+  <blockquote>
+    <p><em>You drop 12 supplier contract PDFs into a folder.</em></p>
+    <p><em>You, in Claude Code:</em> "Read every PDF in this folder. Build a comparison table with columns: supplier, contract length, monthly fee, termination clause, auto-renew yes/no, notice period. Save it as <code>comparison.md</code>. Flag any contracts that auto-renew without notice — those are the time-bombs."</p>
+    <p><em>Claude Code reads all 12 PDFs, builds the table, saves it. Tells you Supplier C and Supplier F auto-renew silently — you'd never have caught that by skimming.</em></p>
+  </blockquote>
+
+  <p><strong>Why this works:</strong> claude.ai doesn't have file access. You'd have to paste each contract individually — slow, error-prone, hits chat-length limits. Claude Code reads the folder directly. The task scales from 12 contracts to 50 with the same prompt.</p>
+
+  <p><strong>Time saved:</strong> half a day on a comparison that no one was looking forward to doing.</p>
+
+  <p><strong>Caveat:</strong> this needs Claude Code installed. We'll cover <em>where</em> it goes on your computer in <a href="../03-where-things-live/index.html">Lesson 3</a>. Install comes later — don't install anything yet.</p>
+
+  <p><strong>See it in action:</strong> press Play, then try typing your own request.</p>
+
+  <div data-playground="claude-code-terminal" data-script="rfp-summary"></div>
+
+  <h2>Scenario 4 — Email triage that doesn't take an hour <span style="white-space:nowrap;">(Claude as a coworker)</span></h2>
+
+  <blockquote><p><strong>If you have a row like:</strong> <em>"Triage inbox first thing every morning"</em> or <em>"Field department requests as they come in"</em> — Claude with MCP turns this into a 10-minute window instead of a 60-minute one.</p></blockquote>
+
+  <p><strong>Tool:</strong> <strong>Claude with MCP</strong> (Claude Desktop + Gmail MCP server). The "coworker" mode.</p>
+
+  <p><strong>How it looks:</strong></p>
+
+  <blockquote>
+    <p><em>You open Claude Desktop in the morning.</em></p>
+    <p><em>You:</em> "Pull this morning's unread emails. Group them: (a) supplier issues I need to act on today, (b) internal stakeholders asking for status, (c) FYI / no-action. For group (a), draft a one-line reply for each I can edit and send."</p>
+    <p><em>Claude, via Gmail MCP, reads your inbox, groups the messages, drafts the replies. Tells you Supplier D is asking for an extension on the deadline you just told R&amp;D was firm — that one needs you, not a one-liner.</em></p>
+  </blockquote>
+
+  <p><strong>Why this works:</strong> the work isn't <em>deciding</em> what each email needs — it's the cognitive overhead of switching between 30 unrelated messages. Claude does the switching and the grouping; you make the calls.</p>
+
+  <p><strong>Time saved:</strong> the difference between starting the day exhausted and starting it focused.</p>
+
+  <p><strong>Caveat:</strong> MCP setup takes 15–20 minutes the first time. We'll cover the file structure for that in <a href="../03-where-things-live/index.html">Lesson 3</a> and the actual install when you're ready.</p>
+
+  <h2>Scenario 5 — Coordinating a meeting across three departments</h2>
+
+  <blockquote><p><strong>If you have a row like:</strong> <em>"Set up the [supplier X] qualification meeting with R&amp;D / Finance / Legal"</em> — this is the one that eats your Wednesday afternoons.</p></blockquote>
+
+  <p><strong>Tool:</strong> <strong>Claude with MCP</strong> (Claude Desktop + Calendar MCP server).</p>
+
+  <p><strong>How it looks:</strong></p>
+
+  <blockquote>
+    <p><em>You:</em> "I need a 45-minute meeting next week with me, <span class="pw-who">Sarah (R&amp;D)</span>, <span class="pw-who">Mike (Finance)</span>, and <span class="pw-who">Priya (Legal)</span> about the Supplier X qualification. Find a slot that works for all four of us — prefer afternoons. Draft the invite with the agenda I sent you yesterday."</p>
+    <p><em>Claude, via Calendar MCP, checks four calendars, finds Thursday 2:00 PM, drafts the invite with your agenda. Asks you to confirm before sending.</em></p>
+    <p><em>You: "Send it."</em></p>
+  </blockquote>
+
+  <p><strong>Why this works:</strong> the actual brainwork — what the meeting is about, who needs to be there, what the agenda is — is yours. The <em>coordination</em> work — checking four calendars, finding a slot, drafting the invite — is repetitive and Claude can do it in seconds.</p>
+
+  <p><strong>Time saved:</strong> the slow death of "Doodle when2meet" exchanges.</p>
+
+  <p><strong>Caveat:</strong> same as Scenario 4 — MCP setup needed first. We're not asking you to set this up today. We're showing you what's possible so the names (<a href="../04-ai-tool-zoo/index.html">Lesson 4</a>) land with meaning.</p>
+
+  <p><strong>Click each MCP tool below</strong> to see the request/response flow visually.</p>
+
+  <div data-playground="mcp-demo"></div>
+
+  <h2>Look at your chart</h2>
+
+  <p>Open your <a href="../01-map-your-workflow/index.html">Lesson 1 chart</a> in another tab. Run through each row and ask:</p>
+
+  <ul>
+    <li>Is this a <strong>drafting / synthesis</strong> task? → claude.ai</li>
+    <li>Is this a <strong>read-files / process-folder</strong> task? → Claude Code</li>
+    <li>Is this an <strong>email / calendar / app-touching</strong> task? → Claude as a coworker (MCP)</li>
+    <li>Is this <strong>recurring with the same shape</strong>? → wrap in a skill (Lesson 7)</li>
+    <li>Is this <strong>none of the above</strong> (purely physical, in-person, regulatory paperwork)? → AI won't help here. That's fine.</li>
+  </ul>
+
+  <p>Don't write anything down yet. We'll do the rigorous matching in <a href="../05-match-tools-to-work/index.html">Lesson 5</a>. Right now, just see the pattern.</p>
+
+  <h2>What this lesson did NOT do</h2>
+
+  <ul>
+    <li>Did not formally introduce all the Claude tools. That's <a href="../04-ai-tool-zoo/index.html">Lesson 4</a>, once you've seen them in action.</li>
+    <li>Did not tell you <em>where</em> Claude Code or MCP files live on your machine. That's <a href="../03-where-things-live/index.html">Lesson 3</a> — file organization comes before tool installation.</li>
+    <li>Did not ask you to install anything. Zero installs through Lesson 5. Installation is in Lesson 6.</li>
+  </ul>
+
+  <div class="pw-pager"></div>
+
+</main>
+
+<footer class="pw-foot">
+  <span>Lesson 2 of 7 · your progress saves in this browser</span>
+  <span class="pw-heart" title="you're the best dad. i love you. — L.">♥</span>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script src="../../assets/playgrounds.js"></script>
+<script src="../../assets/game.js"></script>
+<script src="../../assets/askbot.js"></script>
+</body>
+</html>

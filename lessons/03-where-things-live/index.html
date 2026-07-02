@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" data-md-color-scheme="default">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 3 — Where everything lives · Claude, for Amet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/learning.css">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body data-depth="2" data-slug="03-where-things-live" data-screen-label="Lesson 03">
+<div class="pw-progress"><div class="pw-progress-fill"></div></div>
+<header class="pw-header"></header>
+
+<main class="pw-main md-typeset">
+
+  <div class="pw-hero">
+    <div class="pw-hero-num">03</div>
+    <p class="pw-eyebrow">Lesson 03</p>
+    <h1>Where everything lives</h1>
+    <div class="pw-meta">
+      <span class="pw-chip"><strong>~20 min</strong></span>
+      <span class="pw-chip">visual folder map</span>
+      <span class="pw-chip">4 quizzes</span>
+      <span class="pw-chip">cheat sheet</span>
+    </div>
+  </div>
+
+  <p>This is the lesson nobody teaches and everybody wishes they'd had. Before you install any Claude tools, you need to know <strong>where their stuff goes on your computer.</strong> Otherwise you'll have skills you can't find, projects you can't organize, and configs you can't edit.</p>
+
+  <aside class="margin-note">
+    Genuinely — the two-worlds rule (local vs. cloud) was the single thing that made everything else click for me when I was learning this. If it clicks for you, you're 60% of the way home. — L.
+  </aside>
+
+  <p>By the end you'll be able to answer: <em>"I want to install a skill — where does it go? My settings? My project files? My claude.ai work?"</em></p>
+
+  <h2>The two worlds</h2>
+
+  <p>Claude work happens in <strong>two completely separate places</strong>, and confusing them is the #1 source of frustration:</p>
+
+  <ol>
+    <li><strong>On your computer</strong> — where Claude Code, skills, and your actual work files live. Local files. You can see them in Finder/File Explorer.</li>
+    <li><strong>In the cloud</strong> — where claude.ai (the web app), claude.ai Projects, and your chat history live. You can't see these in your file explorer. They're on Anthropic's servers, attached to your account.</li>
+  </ol>
+
+  <p>Mixing the two is the first mistake. The mental rule:</p>
+
+  <blockquote>
+    <p><strong>Files on disk = local Claude (Claude Code, Desktop, skills).</strong><br>
+    <strong>No files visible = cloud Claude (claude.ai, claude.ai Projects).</strong></p>
+  </blockquote>
+
+  <div class="quiz" data-quiz-id="two-worlds">
+    <p class="quiz-q">You uploaded a PDF to a "Project" inside claude.ai. Where does that file actually live?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="Nope — it's not on your computer. It's on Anthropic's servers, attached to your account. If you switch computers, the file is still there. If you clear your downloads folder, the file is unaffected.">In a folder on your computer</li>
+      <li data-correct="true" data-explain="Right. claude.ai Projects live in the cloud. Files you upload there are stored on Anthropic's servers, not on your disk. That's why you can access them from any browser by signing in.">In the cloud, attached to your Anthropic account</li>
+      <li data-correct="false" data-explain="No — it's not stored in your browser. The file is uploaded to Anthropic's servers.">In your browser's cache</li>
+      <li data-correct="false" data-explain="No — Claude Code is a separate, local-only tool. claude.ai (web) and Claude Code don't share files automatically.">In Claude Code's folder on your computer</li>
+    </ul>
+  </div>
+
+  <h2>Map 1 — On your computer</h2>
+
+  <p>Here's the structure that works. Don't build this now — just see it.</p>
+
+<pre><code>your-home-folder/  (~ on Mac/Linux, C:\Users\&lt;you&gt;\ on Windows)
+│
+├── .claude/                          ← Claude Code's global home
+│   ├── CLAUDE.md                     ← Global instructions Claude always reads
+│   ├── settings.json                 ← Your global settings (MCP servers, defaults)
+│   ├── skills/                       ← GLOBAL skills (available in every project)
+│   │   ├── weekly-supplier-summary/
+│   │   │   └── SKILL.md
+│   │   └── dept-lead-memo/
+│   │       └── SKILL.md
+│   └── projects/                     ← Past session history (auto-managed)
+│
+└── Documents/
+    └── procurement/                   ← YOUR work files live here
+        ├── contracts/                 ← PDFs, spreadsheets, whatever
+        │   ├── supplier-a-contract.pdf
+        │   └── supplier-b-contract.pdf
+        ├── meeting-notes/
+        │   └── 2026-05-week-3.md
+        └── .claude/                   ← Procurement-only Claude config
+            ├── CLAUDE.md              ← Instructions just for this folder
+            └── skills/                ← PROJECT skills (only available here)
+                └── rfp-scorecard/
+                    └── SKILL.md</code></pre>
+
+  <p><strong>Click any folder below to explore both worlds interactively.</strong> The tooltip explains what lives there and when you'd use it.</p>
+
+  <div data-playground="folder-tree"></div>
+
+  <p>Two key ideas in this tree:</p>
+
+  <h3><code>~/.claude/</code> is Claude's <em>home</em></h3>
+
+  <p>Everything global to Claude Code lives in your home folder under <code>.claude/</code>. Note the leading dot — it's a hidden folder. On Mac, press <code>Cmd+Shift+.</code> in Finder to see hidden folders. On Windows, toggle "Hidden items" in File Explorer's View menu.</p>
+
+  <p><strong>This is where:</strong></p>
+  <ul>
+    <li>Global skills go (<code>~/.claude/skills/</code>)</li>
+    <li>Your settings go (<code>~/.claude/settings.json</code>)</li>
+    <li>Global instructions go (<code>~/.claude/CLAUDE.md</code>)</li>
+    <li>Session history is auto-saved (<code>~/.claude/projects/</code> — don't touch this)</li>
+  </ul>
+
+  <h3>Each <em>project folder</em> can have its own <code>.claude/</code></h3>
+
+  <p>A "project folder" in the Claude Code sense is just <strong>any folder where you keep work files</strong>. If you make a folder called <code>~/Documents/procurement/</code> and put your contracts, notes, and templates in it, that's your project.</p>
+
+  <p>Inside that folder, you can create a <code>.claude/</code> directory with <strong>project-specific overrides</strong>:</p>
+
+  <ul>
+    <li>A <code>CLAUDE.md</code> that tells Claude about your procurement role, your company's quirks, common acronyms (R&amp;D, GxP, MSA)</li>
+    <li>A <code>skills/</code> folder with skills that only apply when you're working in this folder</li>
+  </ul>
+
+  <p>When you launch Claude Code inside <code>~/Documents/procurement/</code>, it reads both <code>~/.claude/</code> (global) and <code>~/Documents/procurement/.claude/</code> (project). Project overrides win when they conflict.</p>
+
+  <div class="quiz" data-quiz-id="skill-location">
+    <p class="quiz-q">You built a skill called <code>weekly-supplier-summary</code> that you'll use every week regardless of which folder you're in. Where do you put it?</p>
+    <ul class="quiz-opts">
+      <li data-correct="true" data-explain="Right. Global skills go in ~/.claude/skills/. They're available everywhere — in every folder, every Claude Code session. The full path would be ~/.claude/skills/weekly-supplier-summary/SKILL.md.">~/.claude/skills/weekly-supplier-summary/SKILL.md</li>
+      <li data-correct="false" data-explain="Close — but that's a project-specific skill location. It'd only work when you're inside ~/Documents/procurement/. If you want it everywhere, use the global location.">~/Documents/procurement/.claude/skills/weekly-supplier-summary/SKILL.md</li>
+      <li data-correct="false" data-explain="No — claude.ai (web) doesn't use skills. Skills are a Claude Code feature. claude.ai uses 'Custom Instructions' or 'Projects' for similar purposes.">In a claude.ai Project</li>
+      <li data-correct="false" data-explain="No — Documents/Skills/ isn't a Claude convention. Claude looks for skills in .claude/skills/ specifically.">~/Documents/Skills/weekly-supplier-summary/SKILL.md</li>
+    </ul>
+  </div>
+
+  <div class="quiz" data-quiz-id="rfp-skill-location">
+    <p class="quiz-q">You built a skill called <code>rfp-scorecard</code> that's only useful when you're working in your procurement folder — it references your company's specific scoring rubric and shouldn't activate in other contexts. Where do you put it?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="Putting it globally means it'll try to activate everywhere — even when you're working on something unrelated. Use the project-scoped location instead.">~/.claude/skills/rfp-scorecard/SKILL.md (global)</li>
+      <li data-correct="true" data-explain="Right. Project-scoped skills live in <your-project>/.claude/skills/. This one only activates when you're working in ~/Documents/procurement/. Cleaner and safer.">~/Documents/procurement/.claude/skills/rfp-scorecard/SKILL.md</li>
+      <li data-correct="false" data-explain="No — Claude doesn't read random folders. Skills must be inside a .claude/skills/ folder, either global or project.">~/Documents/procurement/rfp-scorecard/SKILL.md (loose in the project)</li>
+      <li data-correct="false" data-explain="No — claude.ai (web) doesn't use skills. Skills are a Claude Code feature.">As a claude.ai Project knowledge file</li>
+    </ul>
+  </div>
+
+  <h2>Map 2 — In the cloud (claude.ai)</h2>
+
+  <p>This part has no folders you can see. It's all on Anthropic's servers, accessed via <a href="https://claude.ai">claude.ai</a>.</p>
+
+<pre><code>Your Anthropic account (cloud)
+│
+├── Chats                       ← Every chat you've had, browsable in the sidebar
+│
+└── Projects                    ← claude.ai's "Projects" feature (different from Claude Code)
+    │
+    ├── "Procurement work"      ← A Project you create for ongoing procurement
+    │   ├── Custom instructions ← "I'm a procurement consultant at..."
+    │   ├── Knowledge files     ← PDFs / docs you upload (cloud-stored)
+    │   └── Chats inside it     ← All inherit the instructions + knowledge
+    │
+    └── "Supplier research"     ← A different Project for ad-hoc supplier research
+        └── (its own setup)</code></pre>
+
+  <p><strong>Three things to know:</strong></p>
+
+  <ol>
+    <li><strong>claude.ai Projects ≠ Claude Code project folders.</strong> They share the name and that's it. claude.ai Projects are cloud-only; Claude Code projects are folders on your disk.</li>
+    <li><strong>You can't open a claude.ai Project file in Finder.</strong> It only exists inside claude.ai. If you want to download it, you have to do it manually from the web UI.</li>
+    <li><strong>Custom instructions</strong> in a claude.ai Project work like a mini <code>CLAUDE.md</code> — they prefix every chat in that Project. Best for "I always need Claude to know I'm a procurement consultant at Sanofi."</li>
+  </ol>
+
+  <div class="quiz" data-quiz-id="claude-ai-project-location">
+    <p class="quiz-q">You want every chat about procurement work to start with the same context paragraph ("I'm a procurement consultant at Sanofi, here's my role..."). You don't want to install Claude Code yet. Where does that paragraph go?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="No — CLAUDE.md is a Claude Code (local) feature. If you don't have Claude Code installed, this doesn't help.">In a CLAUDE.md file on your computer</li>
+      <li data-correct="true" data-explain="Right. claude.ai Projects have 'Custom instructions' that get prepended to every chat in that Project. Create a 'Procurement work' Project, drop your context paragraph in the Custom instructions field, and every chat inside that Project carries it.">In a claude.ai Project's Custom instructions</li>
+      <li data-correct="false" data-explain="That works but it's the lazy version — you'd retype it every chat. Projects exist exactly to avoid this.">Pasted at the start of every chat manually</li>
+      <li data-correct="false" data-explain="No — there's no global setting in claude.ai for this. The closest thing is Projects.">In claude.ai's main settings</li>
+    </ul>
+  </div>
+
+  <h2>Where Claude Desktop fits</h2>
+
+  <p>Claude Desktop is the macOS/Windows app version of claude.ai — same chat interface, but with <strong>MCP support</strong> (the "coworker" mode from <a href="../02-ai-in-your-workflow/index.html">Lesson 2</a>).</p>
+
+<pre><code>Claude Desktop's stuff lives at:
+  Mac:     ~/Library/Application Support/Claude/
+  Windows: %AppData%\Claude\
+
+Inside it:
+  ├── claude_desktop_config.json   ← MCP server connections live here
+  └── (other internal state — don't touch)</code></pre>
+
+  <p>If you set up MCP for Gmail, Calendar, etc., that configuration lives in <code>claude_desktop_config.json</code>. You'll edit this file once during MCP setup. We're not setting it up now — just naming where it lives.</p>
+
+  <h2>The cheat sheet</h2>
+
+  <p>When in doubt, ask yourself: <strong>what kind of thing is this, and which world does it belong in?</strong></p>
+
+  <table>
+    <thead><tr><th>You want to…</th><th>It goes here</th></tr></thead>
+    <tbody>
+      <tr><td>Install a skill you'll use everywhere</td><td><code>~/.claude/skills/&lt;name&gt;/SKILL.md</code></td></tr>
+      <tr><td>Install a skill only for procurement work</td><td><code>~/Documents/procurement/.claude/skills/&lt;name&gt;/SKILL.md</code></td></tr>
+      <tr><td>Set global Claude Code instructions</td><td><code>~/.claude/CLAUDE.md</code></td></tr>
+      <tr><td>Set procurement-only instructions</td><td><code>~/Documents/procurement/CLAUDE.md</code></td></tr>
+      <tr><td>Keep contracts, notes, RFPs</td><td><code>~/Documents/procurement/</code> (or wherever you want)</td></tr>
+      <tr><td>Set "I'm a procurement consultant" context for claude.ai chats</td><td>claude.ai Project → Custom instructions</td></tr>
+      <tr><td>Upload a reference doc Claude should know about (cloud)</td><td>claude.ai Project → Knowledge files</td></tr>
+      <tr><td>Configure MCP servers (Gmail, Calendar)</td><td><code>claude_desktop_config.json</code> (Mac: <code>~/Library/Application Support/Claude/</code>, Windows: <code>%AppData%\Claude\</code>)</td></tr>
+      <tr><td>Save your past chats</td><td>Auto-saved — claude.ai keeps them in the cloud, Claude Code keeps them in <code>~/.claude/projects/</code></td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Print this cheat sheet or bookmark it.</strong> When you start installing things in Lesson 6+, you'll come back here.</p>
+
+  <h2>Recommended setup for procurement</h2>
+
+  <p>If you follow nothing else, do this:</p>
+
+  <ol>
+    <li>Create <code>~/Documents/procurement/</code> (or wherever, but a dedicated folder helps).</li>
+    <li>When you install Claude Code (Lesson 6), it'll auto-create <code>~/.claude/</code> for you. Don't pre-create it.</li>
+    <li>Inside <code>~/Documents/procurement/</code>, create <code>.claude/CLAUDE.md</code> and put your role context there. That way Claude Code knows who you are whenever you're working in that folder.</li>
+    <li>Keep your contracts, meeting notes, and RFPs <em>inside</em> <code>~/Documents/procurement/</code> so Claude Code can read them when you ask.</li>
+    <li>Separately, in claude.ai, create a "Procurement" Project with the same role context in Custom instructions. Now both surfaces know who you are.</li>
+  </ol>
+
+  <p>You don't have to do any of this today. The next lesson names the tools formally; the lesson after that has you match them to your work. Setup happens in Lesson 6.</p>
+
+  <h2>Done check</h2>
+
+  <div class="quiz" data-quiz-id="org-done" data-next="04-ai-tool-zoo.md">
+    <p class="quiz-q">Final check — what's the single most important thing to remember from this lesson?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="Useful, but not the headline. The headline is the two-worlds distinction.">The exact path of ~/.claude/skills/</li>
+      <li data-correct="true" data-explain="Right. Local (Claude Code, Desktop, skills, your work files) and cloud (claude.ai, claude.ai Projects) are completely separate. Files on your disk are local. Things in claude.ai are cloud. Don't mix them in your head and everything else gets easier.">Local Claude (on your disk) and cloud Claude (claude.ai) are separate worlds with separate file locations</li>
+      <li data-correct="false" data-explain="The cheat sheet is useful but it's reference material, not the core idea. Bookmark it but don't try to memorize it.">Memorizing the cheat sheet</li>
+      <li data-correct="false" data-explain="Setup is in Lesson 6, not now. This lesson is just *where* things go, not *how* to install them.">Setting up the folders right now</li>
+    </ul>
+    <p class="quiz-next-cta">Lesson 4 — The AI tool zoo →</p>
+  </div>
+
+  <h2>What this lesson did NOT do</h2>
+
+  <ul>
+    <li>Did not install anything. Setup is Lesson 6.</li>
+    <li>Did not cover every Claude config file in detail. Just the ones that matter for procurement work.</li>
+    <li>Did not address Sanofi's IT policy on installing Claude Code. That's a separate conversation before you install anything on a work machine.</li>
+  </ul>
+
+  <div class="pw-pager"></div>
+
+</main>
+
+<footer class="pw-foot">
+  <span>Lesson 3 of 7 · your progress saves in this browser</span>
+  <span class="pw-heart" title="you're the best dad. i love you. — L.">♥</span>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script src="../../assets/playgrounds.js"></script>
+<script src="../../assets/game.js"></script>
+<script src="../../assets/askbot.js"></script>
+</body>
+</html>

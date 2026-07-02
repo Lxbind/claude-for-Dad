@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-md-color-scheme="default">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 6 — Try Claude on a real task · Claude, for Amet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/learning.css">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body data-depth="2" data-slug="06-try-claude" data-screen-label="Lesson 06">
+<div class="pw-progress"><div class="pw-progress-fill"></div></div>
+<header class="pw-header"></header>
+
+<main class="pw-main md-typeset">
+
+  <div class="pw-hero">
+    <div class="pw-hero-num">06</div>
+    <p class="pw-eyebrow">Lesson 06</p>
+    <h1>Try Claude on a real task</h1>
+    <div class="pw-meta">
+      <span class="pw-chip"><strong>~25 min</strong></span>
+      <span class="pw-chip">hands-on, on claude.ai</span>
+      <span class="pw-chip">first real win</span>
+    </div>
+  </div>
+
+  <p>Up until now this course has been theory and quizzes. This lesson is where it pays off — pick the row you flagged in Lesson 5 and walk through doing it for real.</p>
+
+  <aside class="margin-note">
+    Pick something real but low-stakes — a memo you were going to write anyway, not a decision that's actually hot. The point is the <em>feel</em> of the tool, not the outcome. — L.
+  </aside>
+
+  <h2>Before you start</h2>
+
+  <ol>
+    <li><strong>Have your workflow chart open</strong> in another tab (<a href="../01-map-your-workflow/index.html">Lesson 1</a>).</li>
+    <li><strong>Sign in to <a href="https://claude.ai">claude.ai</a></strong> in a new tab. Free signup is enough. No credit card required.</li>
+    <li><strong>Pick the row</strong> you flagged in Lesson 3 — the most obvious "claude.ai win." Examples:
+      <ul>
+        <li>Drafting a memo</li>
+        <li>Summarizing meeting notes</li>
+        <li>Writing a tough email</li>
+        <li>Comparing two suppliers from notes you'd paste in</li>
+        <li>Producing a one-page brief from raw notes</li>
+      </ul>
+    </li>
+    <li><strong>Avoid confidential data for this lesson.</strong> Use a real task, but if it involves a specific supplier name or amount, swap them for placeholders ("Supplier A," "$X"). Lesson 4 is about feel, not stakes.</li>
+  </ol>
+
+  <h2>The recipe</h2>
+
+  <p>Every effective Claude prompt has four parts. Build your prompt with them in order.</p>
+
+  <h3>Part 1 — Role</h3>
+
+  <p>Tell Claude who you are. One sentence.</p>
+
+  <blockquote><p><em>"I'm a procurement consultant at a pharma company advising internal departments (R&amp;D, manufacturing, commercial)."</em></p></blockquote>
+
+  <p>This calibrates the tone, vocabulary, and assumptions Claude uses. Without it, you get generic advice.</p>
+
+  <h3>Part 2 — Task</h3>
+
+  <p>What you want Claude to do, plus the <em>output format</em>.</p>
+
+  <blockquote><p><em>"Draft a memo to my R&amp;D department lead explaining why we're pausing the [Supplier A] contract renewal. Two paragraphs. Tone: firm but collegial."</em></p></blockquote>
+
+  <p>Specify the format. "A memo" is vague. "Two paragraphs, firm-but-collegial tone" is workable.</p>
+
+  <h3>Part 3 — Context</h3>
+
+  <p>Everything Claude can't know unless you tell it. Background. What's already been decided. Constraints.</p>
+
+  <blockquote><p><em>"Context: Supplier A missed three deadlines this quarter. We've already discussed pausing internally. R&amp;D was the original sponsor and pushed for them last year — that's why this needs care."</em></p></blockquote>
+
+  <p>The more specific, the better. Don't make Claude guess.</p>
+
+  <h3>Part 4 — Constraints</h3>
+
+  <p>What <em>not</em> to do, or what to make sure of.</p>
+
+  <blockquote><p><em>"Don't mention the missed deadlines as a list — keep it narrative. Don't apologize for the decision. Don't promise a specific replacement supplier yet."</em></p></blockquote>
+
+  <p>Constraints are where most prompts get sharper. Without them you get a vanilla answer.</p>
+
+  <h2>Put it together</h2>
+
+  <p>Below is the full template. <strong>Open claude.ai, paste this, fill in the [brackets] for your task, and send.</strong></p>
+
+<pre><code>Role: I'm a procurement consultant at Sanofi advising internal departments.
+
+Task: [What you want Claude to do, and in what format].
+
+Context:
+- [Background detail 1]
+- [Background detail 2]
+- [Background detail 3]
+
+Constraints:
+- [What not to do]
+- [Tone / length / audience requirements]</code></pre>
+
+  <h2>Practice the recipe here first</h2>
+
+  <p><strong>Before you touch real claude.ai</strong>, try the recipe in this mock. Fill in each of the four slots, then click "Send full prompt" — the mock shows how Claude would respond. Once you see the pattern, do it for real on claude.ai.</p>
+
+  <div data-playground="claude-ai-chat" data-mode="recipe"></div>
+
+  <h2>After you send</h2>
+
+  <p>You'll get a response. Now the real work begins — <strong>iterate</strong>. Don't accept the first draft.</p>
+
+  <p>Reply with corrections. Specific ones. Examples:</p>
+
+  <ul>
+    <li><em>"The second paragraph is too apologetic. Rewrite it without the word 'unfortunately.'"</em></li>
+    <li><em>"Add a sentence at the end that signals we're open to a future conversation if their delivery improves."</em></li>
+    <li><em>"This is too long. Cut to one paragraph."</em></li>
+  </ul>
+
+  <p>This back-and-forth is the actual skill. The first draft is rarely what you want. The third or fourth one usually is.</p>
+
+  <h2>Done check</h2>
+
+  <div class="quiz" data-quiz-id="first-task-done" data-next="07-build-a-skill.md">
+    <p class="quiz-q">Did you complete a real task on claude.ai using the four-part recipe?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="Try again — this lesson needs you to actually use claude.ai once. Pick a small, low-stakes task and walk through the recipe.">I haven't done it yet</li>
+      <li data-correct="true" data-explain="Good. You've now experienced what AI feels like on your work. Note how much of the quality came from the *context* and *constraints* sections — not from anything fancy. That's the lesson. Now we'll automate the parts you'd otherwise repeat.">Yes, and I iterated at least once</li>
+      <li data-correct="false" data-explain="One iteration is the minimum. The first draft is almost never the final draft — the iteration is where prompting becomes a skill.">Yes, but I accepted the first draft</li>
+      <li data-correct="false" data-explain="That happens. Usually the fix is sharper context or constraints. Try again with a different task — pick something where you already know what 'good' looks like, so you can give Claude better feedback.">Yes, but the output wasn't useful</li>
+    </ul>
+    <p class="quiz-next-cta">Lesson 7 — Build your first skill →</p>
+  </div>
+
+  <h2>What this lesson did NOT do</h2>
+
+  <ul>
+    <li>Did not teach prompt engineering in the abstract — the recipe is the whole theory.</li>
+    <li>Did not push you toward Claude Code, MCP, or Desktop. Those tools become relevant when claude.ai <em>isn't enough</em>. You haven't hit that wall yet.</li>
+    <li>Did not have you build a skill yet. That's Lesson 5 — once you've done the same task twice, the skill becomes obvious.</li>
+  </ul>
+
+  <div class="pw-pager"></div>
+
+</main>
+
+<footer class="pw-foot">
+  <span>Lesson 6 of 7 · your progress saves in this browser</span>
+  <span class="pw-heart" title="you're the best dad. i love you. — L.">♥</span>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script src="../../assets/playgrounds.js"></script>
+<script src="../../assets/game.js"></script>
+<script src="../../assets/askbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-md-color-scheme="default">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 4 — The AI tool zoo · Claude, for Amet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/learning.css">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body data-depth="2" data-slug="04-ai-tool-zoo" data-screen-label="Lesson 04">
+<div class="pw-progress"><div class="pw-progress-fill"></div></div>
+<header class="pw-header"></header>
+
+<main class="pw-main md-typeset">
+
+  <div class="pw-hero">
+    <div class="pw-hero-num">04</div>
+    <p class="pw-eyebrow">Lesson 04</p>
+    <h1>The AI tool zoo</h1>
+    <div class="pw-meta">
+      <span class="pw-chip"><strong>~20 min</strong></span>
+      <span class="pw-chip">6 pick-the-answer questions</span>
+      <span class="pw-chip">one per tool</span>
+    </div>
+  </div>
+
+  <p>Claude isn't one product — it's a family of tools, each built for a different kind of work. This lesson names them. Lesson 5 maps them to <em>your</em> work.</p>
+
+  <aside class="margin-note">
+    Don't try to memorize these names. You'll forget them, then re-derive them in Lesson 5 against your own tasks. That re-derivation is what makes them stick. — L.
+  </aside>
+
+  <p>You've already seen two of them in action in Lesson 2 (Claude Code and Claude+MCP). This lesson names the rest and puts them in context.</p>
+
+  <p><strong>Take a click-through tour of the four main surfaces first.</strong> Click each tab to see what it looks like — then the quizzes below will click.</p>
+
+  <div data-playground="tool-tour"></div>
+
+  <h2>Tool 1 — claude.ai (the web chat)</h2>
+
+  <div class="quiz" data-quiz-id="claude-ai">
+    <p class="quiz-q">You open claude.ai in a browser. What's it best for?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="No — claude.ai can't read files on your computer. It only sees what you paste or upload manually into the chat.">Editing files on your computer</li>
+      <li data-correct="true" data-explain="Right. claude.ai is the all-purpose web chat. Drafting, thinking out loud, summarizing pasted text, asking questions, getting unstuck. It's where most procurement work that doesn't need file access happens. No setup beyond a free signup.">One-off thinking, drafting, summarizing pasted text — the all-purpose web chat</li>
+      <li data-correct="false" data-explain="No — claude.ai is sandboxed. It can't reach into Gmail, Calendar, or anything else unless you explicitly paste it in. App connections are Claude Desktop's job.">Sending emails on your behalf</li>
+      <li data-correct="false" data-explain="No — claude.ai is the simplest surface, not for technical heavy lifting. It can write code but can't run it on your system.">Running code on your system</li>
+    </ul>
+  </div>
+
+  <p><strong>The mental model:</strong> claude.ai is the <strong>default surface</strong>. If you're not sure where to start a task, start here. You can always graduate to a more capable surface later.</p>
+
+  <h2>Tool 2 — Claude Code</h2>
+
+  <div class="quiz" data-quiz-id="claude-code">
+    <p class="quiz-q">Claude Code runs in a terminal on your computer. What does it do that claude.ai can't?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="No — it's still the same Claude model. The difference is what Claude can do, not what it knows.">It's a smarter version of Claude</li>
+      <li data-correct="true" data-explain="Right. Claude Code can read and edit files directly on your computer. Open a folder, ask it to summarize all the PDFs, modify a spreadsheet, write a script — it has hands. claude.ai doesn't.">It can read and edit files on your computer directly</li>
+      <li data-correct="false" data-explain="No — both can write code. Only Claude Code can edit code files on your disk without you copy-pasting.">It's the only one that can write code</li>
+      <li data-correct="false" data-explain="Both surfaces work offline only for the duration of the response. Claude Code still needs an internet connection to call the model.">It works offline</li>
+    </ul>
+  </div>
+
+  <p><strong>The mental model:</strong> Claude Code is for <strong>work on files</strong>. If your task is "read these 12 documents and synthesize them," Claude Code beats claude.ai because you don't have to paste each one in by hand.</p>
+
+  <p><strong>For most procurement consultants, Claude Code is overkill at first.</strong> Don't install it until Lesson 4 reveals you actually need it.</p>
+
+  <h2>Tool 3 — Skills</h2>
+
+  <div class="quiz" data-quiz-id="what-is-a-skill" data-next="05-match-tools-to-work.md">
+    <p class="quiz-q">What is a Claude skill?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="No — Claude's intelligence comes from the model. Skills don't make Claude smarter; they make it *consistent* for tasks you repeat.">A way to make Claude smarter at a specific topic</li>
+      <li data-correct="true" data-explain="Right. A skill is a markdown file that says 'when X happens, do Y.' Claude reads it automatically when the trigger matches and follows the instructions. Once installed, you never have to retype the prompt. This is the most powerful tool in the zoo for repeating tasks — which is why Lesson 5 is about building one.">A reusable instruction pack that auto-activates on a trigger phrase</li>
+      <li data-correct="false" data-explain="No — that's MCP (next question). Skills are instructions; MCP servers are app connections.">A connection between Claude and an external app</li>
+      <li data-correct="false" data-explain="No — that's a Claude 'Project,' which we'll cover separately. A skill is reusable instructions; a Project is persistent context.">A folder of files Claude can read from</li>
+    </ul>
+    <p class="quiz-next-cta">You can stop here for the day — or continue to MCP, Projects, and Desktop ↓</p>
+  </div>
+
+  <p><strong>The mental model:</strong> if you find yourself typing the same prompt structure for the third time, that's the trigger to make it a skill.</p>
+
+  <h2>Tool 4 — MCP (Model Context Protocol)</h2>
+
+  <div class="quiz" data-quiz-id="what-is-mcp">
+    <p class="quiz-q">What does MCP do?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="No — that's what Claude itself does. MCP is about connecting Claude to *external* tools.">It lets Claude read and write text</li>
+      <li data-correct="true" data-explain="Right. MCP (Model Context Protocol) is a standard for connecting Claude to external apps — Gmail, Google Calendar, GitHub, Slack, your own internal systems. You install an MCP server, Claude can call it to read emails, schedule meetings, query databases. This is how Claude becomes more than a chatbot.">A standard for connecting Claude to external apps (Gmail, Calendar, your databases)</li>
+      <li data-correct="false" data-explain="No — that's a model version. MCP is plumbing for tool connections.">A faster version of Claude</li>
+      <li data-correct="false" data-explain="No — MCP itself doesn't store anything. It's the protocol that lets Claude *call* external tools that may store things.">A storage system for your past chats</li>
+    </ul>
+  </div>
+
+  <p><strong>The mental model:</strong> MCP is the answer to "can Claude check my calendar / send an email / search the company wiki?" Without MCP, no. With MCP, yes.</p>
+
+  <p><strong>Setting up MCP requires some technical comfort.</strong> Don't worry about it for now — Lesson 4 will tell you whether you actually need it based on your workflow.</p>
+
+  <h2>Tool 5 — Projects (in claude.ai)</h2>
+
+  <div class="quiz" data-quiz-id="what-is-a-project">
+    <p class="quiz-q">In claude.ai, you can create a "Project." What does it give you that a normal chat doesn't?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="No — a Project doesn't make Claude smarter, just more *informed* about your specific context.">Smarter responses</li>
+      <li data-correct="true" data-explain="Right. A Project is a folder of context (instructions, files, examples) that gets attached to *every* chat inside it. So instead of pasting 'I'm a procurement consultant at Sanofi...' every time, you write it once in the Project and forget about it. Best for ongoing work where you'd otherwise repeat yourself constantly.">Persistent context — instructions and files that apply to every chat inside the project</li>
+      <li data-correct="false" data-explain="No — chats inside a Project still don't share memory with each other. The Project gives them shared *setup*, not shared history.">Memory across all your chats</li>
+      <li data-correct="false" data-explain="No — Projects don't connect to apps. That's MCP.">App connections, like email and calendar</li>
+    </ul>
+  </div>
+
+  <p><strong>The mental model:</strong> if you find yourself pasting the same setup paragraph into chat after chat, that setup belongs in a Project.</p>
+
+  <h2>Tool 6 — Claude Desktop</h2>
+
+  <div class="quiz" data-quiz-id="claude-desktop">
+    <p class="quiz-q">Claude Desktop is the macOS/Windows app. When would you pick it over claude.ai (the web version)?</p>
+    <ul class="quiz-opts">
+      <li data-correct="false" data-explain="No — the underlying model is the same. The desktop app isn't 'smarter.'">It's a smarter version of Claude</li>
+      <li data-correct="true" data-explain="Right. The desktop app is where MCP connections live most naturally — you install an MCP server (Gmail, GitHub, your custom one) and the desktop Claude can use it. The web claude.ai can't reach into MCP. If you want Claude that touches your apps, you want the desktop.">When you want Claude to use MCP connections (Gmail, Calendar, custom integrations)</li>
+      <li data-correct="false" data-explain="No — desktop and web both require internet to talk to the model.">It works offline</li>
+      <li data-correct="false" data-explain="No — both surfaces have free options. Cost depends on your subscription, not which app you use.">It's free, while claude.ai costs money</li>
+    </ul>
+  </div>
+
+  <p><strong>The mental model:</strong> Claude Desktop is <strong>claude.ai + MCP connections</strong>. If you don't need MCP yet, stay on claude.ai.</p>
+
+  <h2>Recap</h2>
+
+  <table>
+    <thead><tr><th>Tool</th><th>One-line job</th><th>When to pick it</th></tr></thead>
+    <tbody>
+      <tr><td><strong>claude.ai</strong></td><td>All-purpose web chat</td><td>Default. Most procurement work.</td></tr>
+      <tr><td><strong>Claude Code</strong></td><td>Edits files on your computer</td><td>When the task is "process these files"</td></tr>
+      <tr><td><strong>Skills</strong></td><td>Reusable instruction packs</td><td>When you'd otherwise retype the same prompt</td></tr>
+      <tr><td><strong>MCP</strong></td><td>Lets Claude talk to apps</td><td>When the task touches Gmail / Calendar / your DB</td></tr>
+      <tr><td><strong>Projects</strong></td><td>Persistent context for a topic</td><td>When you'd repeat setup info across chats</td></tr>
+      <tr><td><strong>Claude Desktop</strong></td><td>claude.ai + MCP support</td><td>When you need MCP connections</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Don't memorize this.</strong> Lesson 5 walks you through your workflow row by row, so you derive the right tool for each task instead of relying on memory.</p>
+
+  <div class="pw-pager"></div>
+
+</main>
+
+<footer class="pw-foot">
+  <span>Lesson 4 of 7 · your progress saves in this browser</span>
+  <span class="pw-heart" title="you're the best dad. i love you. — L.">♥</span>
+</footer>
+
+<script src="../../assets/site.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script src="../../assets/playgrounds.js"></script>
+<script src="../../assets/game.js"></script>
+<script src="../../assets/askbot.js"></script>
+</body>
+</html>
