@@ -1,4 +1,4 @@
-# Claude, for Amet — redesigned site
+# Claude, for Dad — redesigned site
 
 Static site. No build step, no MkDocs, no dependencies.
 
